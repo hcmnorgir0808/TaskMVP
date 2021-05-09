@@ -20,9 +20,12 @@ final class Router {
     private var window: UIWindow?
     
     func showRoot(window: UIWindow) {
-        guard let vc = UIStoryboard(name: MVPSearchViewController.className, bundle: nil).instantiateInitialViewController() else {
+        guard let vc = UIStoryboard(name: MVPSearchViewController.className, bundle: nil).instantiateInitialViewController() as? MVPSearchViewController else {
             return
         }
+        let presenter = GithubSearchPresenter(output: vc)
+        vc.inject(presenter: presenter)
+        
         let nav = UINavigationController(rootViewController: vc)
         window.rootViewController = nav
         window.makeKeyAndVisible()
