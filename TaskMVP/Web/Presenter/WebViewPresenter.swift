@@ -8,14 +8,14 @@
 import Foundation
 
 protocol WebViewPresenterInput {
-    var model: GithubModel { get }
+    var githubModel: GithubModel { get }
 }
 
 final class WebViewPresenter: WebViewPresenterInput {
     
-    var model: GithubModel
+    var githubModel: GithubModel
     
     init(model: GithubModel) {
-        self.model = model
+        self.githubModel = model
     }
 }

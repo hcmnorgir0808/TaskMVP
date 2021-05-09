@@ -8,13 +8,13 @@
 import Foundation
 
 protocol GithubSearchPresenterInput {
-    var items: [GithubModel] { get }
+    var githubModels: [GithubModel] { get }
     func tapSearchButton(searchWord: String?)
 }
 
 final class GithubSearchPresenter: GithubSearchPresenterInput {
     
-    var items = [GithubModel]()
+    var githubModels = [GithubModel]()
     
     private weak var output: GithubSearchPresenterOutput?
     
@@ -24,7 +24,7 @@ final class GithubSearchPresenter: GithubSearchPresenterInput {
     
     func tapSearchButton(searchWord: String?) {
         guard let searchWord = searchWord, !searchWord.isEmpty else {
-            self.items = []
+            self.githubModels = []
             self.output?.updateData()
             return
         }
@@ -34,9 +34,9 @@ final class GithubSearchPresenter: GithubSearchPresenterInput {
             switch result {
             case .failure(let error):
                 print(error)
-                self.items = []
+                self.githubModels = []
             case .success(let items):
-                self.items = items
+                self.githubModels = items
             }
             
             self.output?.updateData()

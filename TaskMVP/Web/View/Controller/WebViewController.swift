@@ -31,7 +31,7 @@ final class WebViewController: UIViewController {
         super.viewDidLoad()
         
         guard
-            let model = presenter?.model,
+            let model = presenter?.githubModel,
             let url = URL(string: model.urlStr) else {
             return
         }

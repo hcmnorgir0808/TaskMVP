@@ -63,21 +63,21 @@ extension MVPSearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        guard let model = presenter?.items[indexPath.item] else {
+        guard let githubModel = presenter?.githubModels[indexPath.item] else {
             fatalError()
         }
-        Router.shared.showWeb(from: self, githubModel: model)
+        Router.shared.showWeb(from: self, githubModel: githubModel)
     }
 }
 
 extension MVPSearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        presenter?.items.count ?? 0
+        presenter?.githubModels.count ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MVPTableViewCell.className) as? MVPTableViewCell,
-              let githubModel = presenter?.items[indexPath.item] else {
+              let githubModel = presenter?.githubModels[indexPath.item] else {
             fatalError()
         }
         
