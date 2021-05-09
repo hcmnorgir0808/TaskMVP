@@ -8,14 +8,25 @@
 import Foundation
 
 protocol WebViewPresenterInput {
-    var githubModel: GithubModel { get }
+    func viewDidloaded()
 }
 
 final class WebViewPresenter: WebViewPresenterInput {
+    private var githubModel: GithubModel
+    private weak var output: WebViewPresenterOutput?
     
-    var githubModel: GithubModel
-    
-    init(model: GithubModel) {
+    init(model: GithubModel, output: WebViewPresenterOutput) {
         self.githubModel = model
+        self.output = output
+    }
+    
+    func viewDidloaded() {
+        guard
+            let url = URL(string: githubModel.urlStr) else {
+            return
+        }
+        
+        self.output?.load(url: url)
+        
     }
 }

@@ -8,19 +8,29 @@
 import Foundation
 
 protocol GithubSearchPresenterInput {
-    var githubModels: [GithubModel] { get }
+    var numberOfItems: Int { get }
+    func item(at: Int) -> GithubModel
     func tapSearchButton(searchWord: String?)
+    func didSelect(at index: Int)
 }
 
-final class GithubSearchPresenter: GithubSearchPresenterInput {
+final class GithubSearchPresenter {
     
-    var githubModels = [GithubModel]()
+    private var githubModels = [GithubModel]()
     
     private weak var output: GithubSearchPresenterOutput?
+    private var api: GithubAPIProtocol
     
-    init(output: GithubSearchPresenterOutput) {
+    init(output: GithubSearchPresenterOutput, api: GithubAPIProtocol) {
         self.output = output
+        self.api = api
     }
+}
+
+extension GithubSearchPresenter: GithubSearchPresenterInput {
+    var numberOfItems: Int { githubModels.count }
+    
+    func item(at index: Int) -> GithubModel { githubModels[index] }
     
     func tapSearchButton(searchWord: String?) {
         guard let searchWord = searchWord, !searchWord.isEmpty else {
@@ -29,17 +39,22 @@ final class GithubSearchPresenter: GithubSearchPresenterInput {
             return
         }
         
-        GithubAPI.shared.get(searchWord: searchWord) { [weak self] result in
-            guard let self = self else { return }
+        self.output?.update(loading: true)
+        
+        api.get(searchWord: searchWord) { [weak self] result in
+            self?.output?.update(loading: false)
             switch result {
             case .failure(let error):
-                print(error)
-                self.githubModels = []
+                self?.output?.get(error: error)
+                self?.githubModels = []
             case .success(let items):
-                self.githubModels = items
+                self?.githubModels = items
             }
-            
-            self.output?.updateData()
+            self?.output?.updateData()
         }
+    }
+    
+    func didSelect(at index: Int) {
+        output?.showWeb(githubModel: githubModels[index])
     }
 }

@@ -23,7 +23,7 @@ final class Router {
         guard let vc = UIStoryboard(name: MVPSearchViewController.className, bundle: nil).instantiateInitialViewController() as? MVPSearchViewController else {
             return
         }
-        let presenter = GithubSearchPresenter(output: vc)
+        let presenter = GithubSearchPresenter(output: vc, api: GithubAPI.shared)
         vc.inject(presenter: presenter)
         
         let nav = UINavigationController(rootViewController: vc)
@@ -37,7 +37,7 @@ final class Router {
             return
         }
         
-        let presenter = WebViewPresenter(model: githubModel)
+        let presenter = WebViewPresenter(model: githubModel, output: vc)
         vc.inject(presenter: presenter)
         show(from: from, to: vc)
     }

@@ -12,11 +12,15 @@ import Foundation
  コンポーネントが増えてくるアーキテクチャでは基本Protocolで連携して疎結合にしましょう
  */
 
+protocol GithubAPIProtocol {
+    func get(searchWord: String, completion: ((Result<[GithubModel], GithubError>) -> Void)?)
+}
+
 enum GithubError: Error {
   case error
 }
 
-final class GithubAPI {
+final class GithubAPI: GithubAPIProtocol {
   static let shared = GithubAPI()
 
   private init() {}

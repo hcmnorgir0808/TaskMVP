@@ -17,6 +17,10 @@ import WebKit
  githubModelといった変化するパラメータを持たない(状態を持たない)
  */
 
+protocol WebViewPresenterOutput: AnyObject {
+    func load(url: URL)
+}
+
 final class WebViewController: UIViewController {
     
     @IBOutlet private weak var webView: WKWebView!
@@ -29,12 +33,12 @@ final class WebViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        guard
-            let model = presenter?.githubModel,
-            let url = URL(string: model.urlStr) else {
-            return
-        }
+        presenter?.viewDidloaded()
+    }
+}
+
+extension WebViewController: WebViewPresenterOutput {
+    func load(url: URL) {
         webView.load(URLRequest(url: url))
     }
 }

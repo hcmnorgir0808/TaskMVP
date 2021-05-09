@@ -18,6 +18,9 @@ import UIKit
 
 protocol GithubSearchPresenterOutput: AnyObject {
     func updateData()
+    func update(loading: Bool)
+    func showWeb(githubModel: GithubModel)
+    func get(error: Error)
 }
 
 final class MVPSearchViewController: UIViewController {
@@ -52,9 +55,6 @@ final class MVPSearchViewController: UIViewController {
     }
     
     @objc func tapSearchButton(_sender: UIResponder) {
-        indicator.isHidden = false
-        tableView.isHidden = true
-        
         presenter?.tapSearchButton(searchWord: searchTextField.text)
     }
 }
@@ -63,21 +63,18 @@ extension MVPSearchViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
         
-        guard let githubModel = presenter?.githubModels[indexPath.item] else {
-            fatalError()
-        }
-        Router.shared.showWeb(from: self, githubModel: githubModel)
+        presenter?.didSelect(at: indexPath.item)
     }
 }
 
 extension MVPSearchViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        presenter?.githubModels.count ?? 0
+        presenter?.numberOfItems ?? 0
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         guard let cell = tableView.dequeueReusableCell(withIdentifier: MVPTableViewCell.className) as? MVPTableViewCell,
-              let githubModel = presenter?.githubModels[indexPath.item] else {
+              let githubModel = presenter?.item(at: indexPath.item) else {
             fatalError()
         }
         
@@ -89,9 +86,22 @@ extension MVPSearchViewController: UITableViewDataSource {
 extension MVPSearchViewController: GithubSearchPresenterOutput {
     func updateData() {
         DispatchQueue.main.async {
-            self.indicator.isHidden = true
-            self.tableView.isHidden = false
             self.tableView.reloadData()
         }
+    }
+    
+    func update(loading: Bool) {
+        DispatchQueue.main.async {
+            self.indicator.isHidden = !loading
+            self.tableView.isHidden = loading
+        }
+    }
+    
+    func showWeb(githubModel: GithubModel) {
+        Router.shared.showWeb(from: self, githubModel: githubModel)
+    }
+    
+    func get(error: Error) {
+        print(error)
     }
 }
