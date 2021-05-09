@@ -18,23 +18,23 @@ import WebKit
  */
 
 final class WebViewController: UIViewController {
-
-  @IBOutlet private weak var webView: WKWebView!
-
-  private var githubModel: GithubModel?
-
-  func configure(githubModel: GithubModel) {
-    self.githubModel = githubModel
-  }
-
-  override func viewDidLoad() {
-    super.viewDidLoad()
-
-    guard
-      let githubModel = githubModel,
-      let url = URL(string: githubModel.urlStr) else {
-      return
+    
+    @IBOutlet private weak var webView: WKWebView!
+    
+    var presenter: WebViewPresenterInput?
+    
+    func inject(presenter: WebViewPresenterInput) {
+        self.presenter = presenter
     }
-    webView.load(URLRequest(url: url))
-  }
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        guard
+            let model = presenter?.model,
+            let url = URL(string: model.urlStr) else {
+            return
+        }
+        webView.load(URLRequest(url: url))
+    }
 }

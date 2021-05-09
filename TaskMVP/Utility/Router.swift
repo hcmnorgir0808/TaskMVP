@@ -33,11 +33,13 @@ final class Router {
     }
     
     func showWeb(from: UIViewController, githubModel: GithubModel) {
-        guard let web = UIStoryboard.init(name: "Web", bundle: nil).instantiateInitialViewController() as? WebViewController else {
+        guard let vc = UIStoryboard(name: WebViewController.className, bundle: nil).instantiateInitialViewController() as? WebViewController else {
             return
         }
-        web.configure(githubModel: githubModel)
-        show(from: from, to: web)
+        
+        let presenter = WebViewPresenter(model: githubModel)
+        vc.inject(presenter: presenter)
+        show(from: from, to: vc)
     }
     
     private func show(from: UIViewController, to: UIViewController, completion:(() -> Void)? = nil){
