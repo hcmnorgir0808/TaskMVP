@@ -11,7 +11,7 @@ protocol WebViewPresenterInput {
     func viewDidloaded()
 }
 
-final class WebViewPresenter: WebViewPresenterInput {
+final class WebViewPresenter {
     private var githubModel: GithubModel
     private weak var output: WebViewPresenterOutput?
     
@@ -19,7 +19,9 @@ final class WebViewPresenter: WebViewPresenterInput {
         self.githubModel = model
         self.output = output
     }
-    
+}
+
+extension WebViewPresenter: WebViewPresenterInput {
     func viewDidloaded() {
         guard
             let url = URL(string: githubModel.urlStr) else {
