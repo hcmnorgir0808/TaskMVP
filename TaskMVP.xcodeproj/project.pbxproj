@@ -10,15 +10,18 @@
 		B6BAEF3C25F8D964006E7088 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BAEF3B25F8D964006E7088 /* AppDelegate.swift */; };
 		B6BAEF4525F8D965006E7088 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B6BAEF4425F8D965006E7088 /* Assets.xcassets */; };
 		B6BAEF4825F8D965006E7088 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6BAEF4625F8D965006E7088 /* LaunchScreen.storyboard */; };
-		B6BAEF6225F8D9D8006E7088 /* Web.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6BAEF5425F8D9D8006E7088 /* Web.storyboard */; };
+		B6BAEF6225F8D9D8006E7088 /* WebViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6BAEF5425F8D9D8006E7088 /* WebViewController.storyboard */; };
 		B6BAEF6325F8D9D8006E7088 /* WebViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BAEF5525F8D9D8006E7088 /* WebViewController.swift */; };
-		B6BAEF6425F8D9D8006E7088 /* MVPSearch.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6BAEF5825F8D9D8006E7088 /* MVPSearch.storyboard */; };
+		B6BAEF6425F8D9D8006E7088 /* MVPSearchViewController.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = B6BAEF5825F8D9D8006E7088 /* MVPSearchViewController.storyboard */; };
 		B6BAEF6525F8D9D8006E7088 /* MVPSearchViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BAEF5925F8D9D8006E7088 /* MVPSearchViewController.swift */; };
 		B6BAEF6625F8D9D8006E7088 /* MVPTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = B6BAEF5B25F8D9D8006E7088 /* MVPTableViewCell.xib */; };
 		B6BAEF6725F8D9D8006E7088 /* MVPTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BAEF5C25F8D9D8006E7088 /* MVPTableViewCell.swift */; };
 		B6BAEF6825F8D9D8006E7088 /* GithubModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BAEF5E25F8D9D8006E7088 /* GithubModel.swift */; };
 		B6BAEF6925F8D9D8006E7088 /* GithubAPI.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BAEF6025F8D9D8006E7088 /* GithubAPI.swift */; };
 		B6BAEF6A25F8D9D8006E7088 /* Router.swift in Sources */ = {isa = PBXBuildFile; fileRef = B6BAEF6125F8D9D8006E7088 /* Router.swift */; };
+		C60C1A2E2647ECFD00D66B88 /* WebViewPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C60C1A2D2647ECFD00D66B88 /* WebViewPresenter.swift */; };
+		C66963C12642F393006DE880 /* GithubSearchPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = C66963C02642F393006DE880 /* GithubSearchPresenter.swift */; };
+		C68BE35726428FCD00175106 /* NSObject+.swift in Sources */ = {isa = PBXBuildFile; fileRef = C68BE35626428FCD00175106 /* NSObject+.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -27,15 +30,18 @@
 		B6BAEF4425F8D965006E7088 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		B6BAEF4725F8D965006E7088 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		B6BAEF4925F8D965006E7088 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		B6BAEF5425F8D9D8006E7088 /* Web.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Web.storyboard; sourceTree = "<group>"; };
+		B6BAEF5425F8D9D8006E7088 /* WebViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = WebViewController.storyboard; sourceTree = "<group>"; };
 		B6BAEF5525F8D9D8006E7088 /* WebViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = WebViewController.swift; sourceTree = "<group>"; };
-		B6BAEF5825F8D9D8006E7088 /* MVPSearch.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MVPSearch.storyboard; sourceTree = "<group>"; };
+		B6BAEF5825F8D9D8006E7088 /* MVPSearchViewController.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = MVPSearchViewController.storyboard; sourceTree = "<group>"; };
 		B6BAEF5925F8D9D8006E7088 /* MVPSearchViewController.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVPSearchViewController.swift; sourceTree = "<group>"; };
 		B6BAEF5B25F8D9D8006E7088 /* MVPTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = MVPTableViewCell.xib; sourceTree = "<group>"; };
 		B6BAEF5C25F8D9D8006E7088 /* MVPTableViewCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = MVPTableViewCell.swift; sourceTree = "<group>"; };
 		B6BAEF5E25F8D9D8006E7088 /* GithubModel.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubModel.swift; sourceTree = "<group>"; };
 		B6BAEF6025F8D9D8006E7088 /* GithubAPI.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = GithubAPI.swift; sourceTree = "<group>"; };
 		B6BAEF6125F8D9D8006E7088 /* Router.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Router.swift; sourceTree = "<group>"; };
+		C60C1A2D2647ECFD00D66B88 /* WebViewPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebViewPresenter.swift; sourceTree = "<group>"; };
+		C66963C02642F393006DE880 /* GithubSearchPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GithubSearchPresenter.swift; sourceTree = "<group>"; };
+		C68BE35626428FCD00175106 /* NSObject+.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "NSObject+.swift"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -76,6 +82,7 @@
 				B6BAEF5625F8D9D8006E7088 /* Search */,
 				B6BAEF5F25F8D9D8006E7088 /* Utility */,
 				B6BAEF5225F8D9D8006E7088 /* Web */,
+				C68BE35526428FB200175106 /* Extension */,
 			);
 			path = TaskMVP;
 			sourceTree = "<group>";
@@ -83,7 +90,8 @@
 		B6BAEF5225F8D9D8006E7088 /* Web */ = {
 			isa = PBXGroup;
 			children = (
-				B6BAEF5325F8D9D8006E7088 /* Controller */,
+				C60C1A2B2647ECD800D66B88 /* View */,
+				C60C1A2C2647ECE600D66B88 /* Presenter */,
 			);
 			path = Web;
 			sourceTree = "<group>";
@@ -91,7 +99,7 @@
 		B6BAEF5325F8D9D8006E7088 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B6BAEF5425F8D9D8006E7088 /* Web.storyboard */,
+				B6BAEF5425F8D9D8006E7088 /* WebViewController.storyboard */,
 				B6BAEF5525F8D9D8006E7088 /* WebViewController.swift */,
 			);
 			path = Controller;
@@ -100,8 +108,8 @@
 		B6BAEF5625F8D9D8006E7088 /* Search */ = {
 			isa = PBXGroup;
 			children = (
-				B6BAEF5725F8D9D8006E7088 /* Controller */,
 				B6BAEF5A25F8D9D8006E7088 /* View */,
+				C66963BF2642F377006DE880 /* Presenter */,
 			);
 			path = Search;
 			sourceTree = "<group>";
@@ -109,7 +117,7 @@
 		B6BAEF5725F8D9D8006E7088 /* Controller */ = {
 			isa = PBXGroup;
 			children = (
-				B6BAEF5825F8D9D8006E7088 /* MVPSearch.storyboard */,
+				B6BAEF5825F8D9D8006E7088 /* MVPSearchViewController.storyboard */,
 				B6BAEF5925F8D9D8006E7088 /* MVPSearchViewController.swift */,
 			);
 			path = Controller;
@@ -118,6 +126,7 @@
 		B6BAEF5A25F8D9D8006E7088 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				B6BAEF5725F8D9D8006E7088 /* Controller */,
 				B6BAEF5B25F8D9D8006E7088 /* MVPTableViewCell.xib */,
 				B6BAEF5C25F8D9D8006E7088 /* MVPTableViewCell.swift */,
 			);
@@ -139,6 +148,38 @@
 				B6BAEF6125F8D9D8006E7088 /* Router.swift */,
 			);
 			path = Utility;
+			sourceTree = "<group>";
+		};
+		C60C1A2B2647ECD800D66B88 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				B6BAEF5325F8D9D8006E7088 /* Controller */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C60C1A2C2647ECE600D66B88 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				C60C1A2D2647ECFD00D66B88 /* WebViewPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		C66963BF2642F377006DE880 /* Presenter */ = {
+			isa = PBXGroup;
+			children = (
+				C66963C02642F393006DE880 /* GithubSearchPresenter.swift */,
+			);
+			path = Presenter;
+			sourceTree = "<group>";
+		};
+		C68BE35526428FB200175106 /* Extension */ = {
+			isa = PBXGroup;
+			children = (
+				C68BE35626428FCD00175106 /* NSObject+.swift */,
+			);
+			path = Extension;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -199,10 +240,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				B6BAEF4825F8D965006E7088 /* LaunchScreen.storyboard in Resources */,
-				B6BAEF6425F8D9D8006E7088 /* MVPSearch.storyboard in Resources */,
+				B6BAEF6425F8D9D8006E7088 /* MVPSearchViewController.storyboard in Resources */,
 				B6BAEF4525F8D965006E7088 /* Assets.xcassets in Resources */,
 				B6BAEF6625F8D9D8006E7088 /* MVPTableViewCell.xib in Resources */,
-				B6BAEF6225F8D9D8006E7088 /* Web.storyboard in Resources */,
+				B6BAEF6225F8D9D8006E7088 /* WebViewController.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -213,13 +254,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C60C1A2E2647ECFD00D66B88 /* WebViewPresenter.swift in Sources */,
 				B6BAEF6525F8D9D8006E7088 /* MVPSearchViewController.swift in Sources */,
 				B6BAEF6925F8D9D8006E7088 /* GithubAPI.swift in Sources */,
 				B6BAEF6825F8D9D8006E7088 /* GithubModel.swift in Sources */,
 				B6BAEF6A25F8D9D8006E7088 /* Router.swift in Sources */,
 				B6BAEF3C25F8D964006E7088 /* AppDelegate.swift in Sources */,
+				C68BE35726428FCD00175106 /* NSObject+.swift in Sources */,
 				B6BAEF6725F8D9D8006E7088 /* MVPTableViewCell.swift in Sources */,
 				B6BAEF6325F8D9D8006E7088 /* WebViewController.swift in Sources */,
+				C66963C12642F393006DE880 /* GithubSearchPresenter.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
