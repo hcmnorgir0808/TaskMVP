@@ -20,12 +20,9 @@ final class Router {
     private var window: UIWindow?
     
     func showRoot(window: UIWindow) {
-        guard let vc = UIStoryboard(name: MVPSearchViewController.className, bundle: nil).instantiateInitialViewController() as? MVPSearchViewController else {
+        guard let vc = UIStoryboard(name: MVVMSearchViewController.className, bundle: nil).instantiateInitialViewController() as? MVVMSearchViewController else {
             return
         }
-        let presenter = GithubSearchPresenter(output: vc, api: GithubAPI.shared)
-        vc.inject(presenter: presenter)
-        
         let nav = UINavigationController(rootViewController: vc)
         window.rootViewController = nav
         window.makeKeyAndVisible()
@@ -37,8 +34,8 @@ final class Router {
             return
         }
         
-        let presenter = WebViewPresenter(model: githubModel, output: vc)
-        vc.inject(presenter: presenter)
+        let viewModel = WebViewModel(model: githubModel)
+        vc.inject(viewModel: viewModel)
         show(from: from, to: vc)
     }
     

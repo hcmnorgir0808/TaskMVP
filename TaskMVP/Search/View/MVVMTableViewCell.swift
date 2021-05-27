@@ -10,7 +10,7 @@ import UIKit
 /*
  MVCと基本変わらない
  */
-final class MVPTableViewCell: UITableViewCell {
+final class MVVMTableViewCell: UITableViewCell {
     
     @IBOutlet private weak var titleLabel: UILabel!
     @IBOutlet private weak var urlLabel: UILabel!

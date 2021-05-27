@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import RxSwift
 
 /*
  MVC構成用のUtilityです
@@ -43,3 +44,24 @@ final class GithubAPI: GithubAPIProtocol {
     task.resume()
   }
 }
+
+// 自作のGithubAPIクラスのfunctionをRx対応させる
+extension GithubAPI: ReactiveCompatible {}
+extension Reactive where Base: GithubAPI {
+    func get(searchWord: String) -> Observable<[GithubModel]> {
+        return Observable.create { observer in
+            GithubAPI.shared.get(searchWord: searchWord) { result in
+                switch result {
+                case .failure(let error):
+                    // 失敗したら空を返す
+                    print(error)
+                    observer.on(.error(error))
+                case .success(let models):
+                    observer.on(.next(models))
+                }
+            }
+            return Disposables.create()
+        }
+    }
+}
+

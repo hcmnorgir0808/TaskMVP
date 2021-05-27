@@ -25,20 +25,18 @@ final class WebViewController: UIViewController {
     
     @IBOutlet private weak var webView: WKWebView!
     
-    var presenter: WebViewPresenterInput?
+    private var viewModel: WebViewModel!
+    private lazy var output: WebViewModelOutput = viewModel
     
-    func inject(presenter: WebViewPresenterInput) {
-        self.presenter = presenter
+    func inject(viewModel: WebViewModel) {
+        self.viewModel = viewModel
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        presenter?.viewDidloaded()
-    }
-}
-
-extension WebViewController: WebViewPresenterOutput {
-    func load(url: URL) {
+        
+        guard let url = URL(string: output.model.urlStr) else { return }
+        
         webView.load(URLRequest(url: url))
     }
 }
