@@ -18,13 +18,6 @@ import RxSwift
  itemsといった変化するパラメータを持たない(状態を持たない)
 */
 
-//protocol GithubSearchPresenterOutput: AnyObject {
-//    func updateData()
-//    func update(loading: Bool)
-//    func showWeb(githubModel: GithubModel)
-//    func get(error: Error)
-//}
-
 final class MVVMSearchViewController: UIViewController {
 
     @IBOutlet private weak var searchTextField: UITextField!
