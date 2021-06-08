@@ -48,7 +48,9 @@ final class MVVMSearchViewController: UIViewController {
     private func bindInputStream() {
         // 検索ボタンタップのイベント渡す
         let searchButtonObservable = searchButton.rx.tap
-            .map { self.searchTextField.text }
+            .map { [weak self] in
+                self?.searchTextField.text
+            }
         searchButtonObservable.bind(to: input.searchTextObserver)
             .disposed(by: disposeBag)
         

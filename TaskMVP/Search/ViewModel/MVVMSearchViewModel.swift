@@ -22,20 +22,22 @@ protocol MVVMSearchViewModelOutput {
 }
 
 final class MVVMSearchViewModel: MVVMSearchViewModelInput, MVVMSearchViewModelOutput {
-    lazy var searchTextObserver: AnyObserver<String?> = .init { (event) in
+    lazy var searchTextObserver: AnyObserver<String?> = .init { [weak self] (event) in
         // 空文字またはnilの場合はreturn
         guard let element = event.element,
               let searchText = element,
               !searchText.isEmpty else { return }
         
         // loading開始
-        self._loadingState.accept(true)
+        self?._loadingState.accept(true)
         // APIを叩く
-        self._searchText.accept(searchText)
+        self?._searchText.accept(searchText)
     }
     
-    lazy var didSelectRowObserver: AnyObserver<Int> = .init { (event) in
-        guard let index = event.element else { return }
+    lazy var didSelectRowObserver: AnyObserver<Int> = .init { [weak self] (event) in
+
+        guard let index = event.element,
+              let self = self else { return }
         self._selectGithubModel.accept(self.models[index])
     }
     
@@ -56,7 +58,8 @@ final class MVVMSearchViewModel: MVVMSearchViewModelInput, MVVMSearchViewModelOu
     private(set) var models = [GithubModel]()
     
     init() {
-        _searchText.subscribe(onNext: { (searchText) in
+        _searchText.subscribe(onNext: { [weak self] (searchText) in
+            guard let self = self else { return }
             // Observableが帰ってくる
             GithubAPI.shared.rx.get(searchWord: searchText)
                 .map { [weak self] models in
