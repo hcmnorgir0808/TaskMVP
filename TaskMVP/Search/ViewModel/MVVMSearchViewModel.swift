@@ -16,7 +16,7 @@ protocol MVVMSearchViewModelInput: AnyObject {
 
 protocol MVVMSearchViewModelOutput {
     var loadingStateObservable: Observable<Bool> { get }
-    var changeModelObservable: Observable<Void> { get }
+    var changeModelObservable: Observable<[GithubModel]> { get }
     var selectGithubModelObservable: Observable<GithubModel> { get }
     var models: [GithubModel] { get }
 }
@@ -44,7 +44,7 @@ final class MVVMSearchViewModel: MVVMSearchViewModelInput, MVVMSearchViewModelOu
     private let _loadingState = PublishRelay<Bool>()
     private let _searchText = PublishRelay<String>()
     
-    private let _changeModel = PublishRelay<Void>()
+    private let _changeModel = PublishRelay<[GithubModel]>()
     
     private let _selectGithubModel = PublishRelay<GithubModel>()
     
@@ -65,8 +65,9 @@ final class MVVMSearchViewModel: MVVMSearchViewModelInput, MVVMSearchViewModelOu
                 .map { [weak self] models in
                     self?._loadingState.accept(false)
                     self?.models = models
-                    return
-                }.bind(to: self._changeModel).disposed(by: self.disposeBag)
+                    return models
+                }
+                .bind(to: self._changeModel).disposed(by: self.disposeBag)
         }, onError: { error in
             print(error)
         }).disposed(by: disposeBag)
