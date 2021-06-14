@@ -62,14 +62,14 @@ final class MVVMSearchViewModel: MVVMSearchViewModelInput, MVVMSearchViewModelOu
             guard let self = self else { return }
             // Observableが帰ってくる
             GithubAPI.shared.rx.get(searchWord: searchText)
-                .map { [weak self] models in
+                .subscribe(onSuccess: { [weak self] models in
                     self?._loadingState.accept(false)
                     self?.models = models
-                    return models
-                }
-                .bind(to: self._changeModel).disposed(by: self.disposeBag)
-        }, onError: { error in
-            print(error)
+                    self?._changeModel.accept(models)
+                    
+                }, onFailure: { error in
+                    print(error)
+                }).disposed(by: self.disposeBag)
         }).disposed(by: disposeBag)
     }
 }
